@@ -3,7 +3,7 @@ var avatarContainer = document.querySelector('#smile');
 var userData = ['Joe', 'avatar'];
 var questionBox = document.querySelector('#box-questions');
 var questionForm = document.querySelector('.quiz-form');
-var correctAnswers = ['B', 'D', 'B', 'A', 'C'];
+var correctAnswers = ['B', 'D', 'B', 'A', 'C', 'D', 'B'];
 var resultContainer = document.querySelector('.quiz__heading');
 var buttonPrev = document.querySelector('.button_prev');
 var buttonNext = document.querySelector('.button_next');
@@ -27,6 +27,9 @@ userForm.addEventListener('submit', function(e){
     var activeAvatar = document.querySelector('input[name="question2"]:checked');
     var activeIMG = activeAvatar.previousElementSibling.firstElementChild.src;
     var activeName = userForm.elements.question1.value;
+    if(!activeName){
+        activeName = 'Player';
+    }
     userData = [activeName, activeIMG];
     userForm.classList.add('quiz');
     questionBox.classList.remove('quiz');
@@ -44,12 +47,14 @@ questionForm.addEventListener('submit', function(e){
         questionForm.elements.q2,
         questionForm.elements.q3,
         questionForm.elements.q4,
-        questionForm.elements.q5
+        questionForm.elements.q5,
+        questionForm.elements.q6,
+        questionForm.elements.q7
     ];
 
     userAnswers.forEach(function(item, index){
         if(item.value === correctAnswers[index]){
-            count += 20;
+            count += 1;
             for(var i = 0; i < item.length; i++){
                 var isCheked = item[i].checked;
                 if(isCheked){
