@@ -117,6 +117,9 @@ buttonPrev.addEventListener('click', function(){
     if(currentQuiz.previousElementSibling.previousElementSibling === null){
         buttonPrev.classList.add('quiz');
     }
+    if(currentQuiz.nextElementSibling.nextElementSibling.className != 'nav_block' && !buttonSubmit.classList.contains('quiz')){
+        buttonSubmit.classList.add('quiz');
+    }
     
 })
 
