@@ -69,6 +69,9 @@ questionForm.addEventListener('submit', function(e){
                 }
             }
         }
+
+        buttonSubmit.classList.add('quiz');
+        buttonPrev.classList.add('quiz');
     })
 
     resultContainer.classList.remove('quiz__heading');
