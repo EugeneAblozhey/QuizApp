@@ -9,7 +9,6 @@ var buttonPrev = document.querySelector('.button_prev');
 var buttonNext = document.querySelector('.button_next');
 var quizBoxes = document.querySelectorAll('.quiz-form__quiz');
 var buttonSubmit = document.querySelector('input[value="Submit"]');
-console.log(buttonSubmit);
 
 avatarContainer.addEventListener('click', function(e){
     if(document.querySelectorAll('.show')){
@@ -75,13 +74,19 @@ questionForm.addEventListener('submit', function(e){
     })
 
     resultContainer.classList.remove('quiz__heading');
-    userInfo.innerHTML = userData[0] + ' ' + '<img src=" ' + userData[1] + ' " alt="user">' + ' ' + count;
 
     for(var i = 0; i < quizBoxes.length; i++){
         if(quizBoxes[i].classList.contains('quiz')){
             quizBoxes[i].classList.remove('quiz');
         }
     }
+
+    var countAll = 0;
+    for(var i = 0; i < quizBoxes.length; i++){
+        countAll++;
+    }
+    startRes = Math.trunc((100 / countAll) * count);
+    userInfo.innerHTML = userData[0] + ' ' + '<img src=" ' + userData[1] + ' " alt="user">' + ' ' + count + ' question(s) ' + startRes + '%';
     e.preventDefault();
     scrollUp();  
 })
